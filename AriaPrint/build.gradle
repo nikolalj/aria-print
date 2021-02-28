@@ -1,0 +1,109 @@
+plugins {
+    id 'maven-publish'
+}
+
+apply plugin: 'com.android.library'
+apply plugin: 'maven-publish'
+
+android {
+    compileSdkVersion 29
+    buildToolsVersion "30.0.2"
+
+    defaultConfig {
+        minSdkVersion 21
+        targetSdkVersion 29
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles "consumer-rules.pro"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+repositories {
+    maven { url 'https://jitpack.io' }
+}
+
+dependencies {
+    implementation fileTree(dir: "libs", include: ["*.jar"])
+    implementation 'androidx.appcompat:appcompat:1.2.0'
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.2'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+    implementation 'com.github.DantSu:ESCPOS-ThermalPrinter-Android:2.0.8'
+}
+
+// task to delete the old aar
+task deleteOldAar(type: Delete) {
+  delete'../../../platforms/android/AriaPrintNative.aar'
+}
+
+// task to export contents as aar to be used as the nativescript plugin dependency
+task exportAar(type: Copy) {
+  from('build/outputs/aar/')
+  into('../../../platforms/android')
+  include('AriaPrint-release.aar')
+  // name the plugin
+  rename('AriaPrint-release.aar','AriaPrintNative.aar')
+}
+
+exportAar.dependsOn(deleteOldAar, build)
+
+task prepareKotlinBuildScriptModel {
+
+}
+
+task cleanBuildPublishLocal(type: GradleBuild) {
+    tasks = ['clean', 'build', 'publishToMavenLocal']
+}
+
+task cleanBuildPublish(type: GradleBuild) {
+    tasks = ['clean', 'build', 'publish']
+}
+
+// Because the components are created only during the afterEvaluate phase, you must
+// configure your publications using the afterEvaluate() lifecycle method.
+afterEvaluate {
+    publishing {
+        publications {
+            // Creates a Maven publication called "release".
+            release(MavenPublication) {
+                // Applies the component for the release build variant.
+                from components.release
+
+                // You can then customize attributes of the publication as shown below.
+                groupId = 'me.ariapos.print'
+                artifactId = 'final'
+                version = '1.0'
+                artifact(bundleReleaseAar)
+//                artifact("$buildDir/outputs/aar/AriaPrint-release.aar")
+            }
+            // Creates a Maven publication called “debug”.
+            debug(MavenPublication) {
+                // Applies the component for the debug build variant.
+                from components.debug
+
+                groupId = 'me.ariapos.print'
+                artifactId = 'final-debug'
+                version = '1.0'
+            }
+        }
+
+        repositories {
+            maven {
+                url 'https://github.com/nikolalj/aria-print'
+                credentials {
+                    username USERNAME
+                    password PASSWORD
+                }
+            }
+        }
+    }
+}

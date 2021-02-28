@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="Gradle: ./AriaPrint/libs/SmartPos_1.3.6_R201217.jar">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/AriaPrint/libs/SmartPos_1.3.6_R201217.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

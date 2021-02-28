@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/PrintTest.iml" filepath="$PROJECT_DIR$/.idea/modules/PrintTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/AriaPrint/PrintTest.AriaPrint.iml" filepath="$PROJECT_DIR$/.idea/modules/AriaPrint/PrintTest.AriaPrint.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/PrintTest.app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/PrintTest.app.iml" />
+    </modules>
+  </component>
+</project>

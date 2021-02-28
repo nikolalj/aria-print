@@ -1,0 +1,3 @@
+include ':AriaPrint'
+include ':app'
+rootProject.name = "PrintTest"
