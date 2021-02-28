@@ -2,9 +2,11 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/PrintTest.iml" filepath="$PROJECT_DIR$/.idea/modules/PrintTest.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/AriaPrint/PrintTest.AriaPrint.iml" filepath="$PROJECT_DIR$/.idea/modules/AriaPrint/PrintTest.AriaPrint.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/PrintTest.app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/PrintTest.app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/AriaPrint/AriaPrint.iml" filepath="$PROJECT_DIR$/.idea/modules/AriaPrint/AriaPrint.iml" group="PrintTest/AriaPrint" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/PrintTest.iml" filepath="$PROJECT_DIR$/.idea/modules/PrintTest.iml" group="PrintTest" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Xprinter/Xprinter.iml" filepath="$PROJECT_DIR$/.idea/modules/Xprinter/Xprinter.iml" group="PrintTest/Xprinter" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/app.iml" group="PrintTest/app" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/zhing/zhing.iml" filepath="$PROJECT_DIR$/.idea/modules/zhing/zhing.iml" group="PrintTest/zhing" />
     </modules>
   </component>
 </project>
