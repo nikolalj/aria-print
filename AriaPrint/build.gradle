@@ -48,10 +48,10 @@ task deleteOldAar(type: Delete) {
 // task to export contents as aar to be used as the nativescript plugin dependency
 task exportAar(type: Copy) {
   from('build/outputs/aar/')
-  into('../../../platforms/android')
+  into('releases')
   include('AriaPrint-release.aar')
   // name the plugin
-  rename('AriaPrint-release.aar','AriaPrintNative.aar')
+  rename('AriaPrint-release.aar','AriaPrint.aar')
 }
 
 exportAar.dependsOn(deleteOldAar, build)
@@ -96,14 +96,14 @@ afterEvaluate {
             }
         }
 
-        repositories {
-            maven {
-                url 'https://github.com/nikolalj/aria-print'
-                credentials {
-                    username USERNAME
-                    password PASSWORD
-                }
-            }
-        }
+//        repositories {
+//            maven {
+//                url 'https://github.com/nikolalj/aria-print'
+//                credentials {
+//                    username USERNAME
+//                    password PASSWORD
+//                }
+//            }
+//        }
     }
 }
